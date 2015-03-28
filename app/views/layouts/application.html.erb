@@ -1,14 +1,18 @@
-<!--A layout defines the surroundings of an HTML page-->
 <!DOCTYPE html>
 <html>
   <head>
-   <title><%= full_title(yield(:title)) %></title>
-    <%= stylesheet_link_tag    'application', media: 'all',
-                                              'data-turbolinks-track' => true %>
+    <title><%= full_title(yield(:title)) %></title>
+    <%= stylesheet_link_tag 'application', media: 'all',
+                                           'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
+    <%= render 'layouts/shim' %> <!-- Partial - Look for app/views/layouts/_shim.html.erb -->
   </head>
   <body>
-    <%= yield %> <!--Without any arguments, yield will render the template of the current controller/action. So if you're on the cars/show page, it will render views/carts/show.html.erb.-->
+    <%= render 'layouts/header' %>
+    <div class="container">
+      <%= yield %>
+      <%= render 'layouts/footer' %>
+    </div>
   </body>
 </html>

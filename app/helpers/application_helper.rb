@@ -1,4 +1,4 @@
-#
+#In a helper module like this Rails handles the inclusion 
 
 module ApplicationHelper
 
