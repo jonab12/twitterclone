@@ -7,12 +7,12 @@ before_save { self.email = email.downcase }
 
 #user.save will fail unless it meets this validation
 validates :name, precense: true, length: { maximum: 50 }
-validates :email, precense: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }, uiqueness: { case_sensitive: false }  #rails infers uniqueness: true implictly as well
+validates :email, precense: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }  #rails infers uniqueness: true implictly as well
+validates :password, length: { minimum: 6 }
 
-
-#When this function is called it invokes the following functionality:
+#When this function is called it invokes the following functionality: (you need to also add the attribute password_digest:string
 #1. grants the ability to save a securely hashed password_digest attribute(field) 
-#2. A pair of virtual attributes (password and password_confirmation) upon object creation
+#2. A pair of virtual attributes (password and password_confirmation) upon object creation.
 #3. An authenticate method that returns the user when the password is correct
 
 has_secure_password 

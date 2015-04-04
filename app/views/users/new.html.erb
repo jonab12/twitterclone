@@ -1,3 +1,24 @@
 <% provide(:title, 'Sign up') %>
 <h1>Sign up</h1>
-<p>This will be a signup page for new users.</p>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+      <%= form_for(@user) do |f| %> <!-- form_for helper method takes a Active Record Object (user which is initialized but null attributes) and constructs a form to fill it-->
+       <%= render 'shared/error_messages' %>
+
+       <%= f.label :name %>        <!-- <label for="user_name">Name</label> where for specifies which form element a label is bound to-->
+       <%= f.text_field :name, class: 'form-control' %>   <!-- <input id="user_name" name="user[name]" type="text" /> -->
+       
+      <%= f.label :email %>
+      <%= f.email_field :email, class: 'form-control' %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password, class: 'form-control' %>
+
+      <%= f.label :password_confirmation, "Confirmation" %>
+      <%= f.password_field :password_confirmation, class: 'form-control' %>
+
+      <%= f.submit "Create my account", class: "btn btn-primary" %>  <!--<form action="/users" class="new_user" id="new_user" method="post"> -->
+    <% end %>
+  </div>
+</div>

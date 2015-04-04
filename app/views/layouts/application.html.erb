@@ -13,6 +13,7 @@
     <div class="container">
       <%= yield %>
       <%= render 'layouts/footer' %>
+      <%= debug(params) if Rails.env.development? %> <!-- Runs only in the 'Development Enviorment (1 in 3 rails enviorments other than production or tests) -->
     </div>
   </body>
 </html>
